@@ -1,12 +1,39 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+    <header class="hero is-primary">
+      <div id="nav">
+        <router-link to="/">Home</router-link> |
+        <router-link to="/favoris" v-if="favorisLocal" >Favoris</router-link> |
+
+      </div>
+    </header>
+    <section class="section">
+      <div class="container">
+      <router-view/>
     </div>
-    <router-view/>
+    </section>    
+    <footer class="footer">
+      &copy; 2019 - Cepegra
+    </footer>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    favorisLocal() {
+      if (localStorage.garesFavoris) {
+        return true
+      } else 
+      {
+        return false
+      }
+    }
+    
+  }
+}
+</script>
+
 
 <style lang="scss">
 #app {
